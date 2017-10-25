@@ -72,7 +72,7 @@ fi
 if [ -f /sys/hypervisor/uuid ] && [ `head -c 3 /sys/hypervisor/uuid` == ec2 ];
 then
   printf "\nOn an AWS instance - moving ~.bashrc to ~.bash_user\n"
-  mv ~/.bashrc ~.bash_user
+  mv ~/.bashrc ~/.bash_user
 fi
 
 
