@@ -64,3 +64,9 @@ else
   printf "\nAlready installed anaconda3? skipping python setup steps\n"
 fi
 
+if [ -f /sys/hypervisor/uuid ] && [ `head -c 3 /sys/hypervisor/uuid` == ec2 ]; then
+  printf "\nOn an AWS instance - moving ~.bashrc to ~.bash_user\n"
+  mv ~/.bashrc ~.bash_user
+fi
+
+
