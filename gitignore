@@ -1,0 +1,14 @@
+.cache
+.cache-main
+.cache-tests
+.settings/
+*.sw[nop]
+.classpath
+.project
+.settings
+target/
+.DS_Store
+bin/
+.mypy_cache/
+dotfiles/sbt/boot/
+dotfiles/sbt/0.13/dependency/

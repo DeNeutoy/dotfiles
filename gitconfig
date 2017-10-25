@@ -1,0 +1,16 @@
+[user]
+email = markng@allenai.org
+name = Mark Neumann
+[color]
+status = auto
+diff = auto
+branch = auto
+[diff]
+tool = vimdiff
+[merge]
+tool = vimdiff
+[alias]
+graph = log --graph --decorate --oneline --all
+[core]
+excludesfile = ~/.gitignore
+editor = vim
