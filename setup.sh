@@ -11,15 +11,19 @@ dotfiles=(
 )
 
 # Create dotfiles_old in homedir
-echo -n "Creating ~/dotfiles_old for backup of any existing dotfiles."
+printf "\n Creating ~/dotfiles_old for backup of any existing dotfiles.\n"
 mkdir -p ~/dotfiles_old
-echo "done"
+
 # Move any existing dotfiles in homedir to dotfiles_old directory,
 # # then create symlinks from the homedir to any files in the ~/dotfiles
 # # directory specified in $files
-for dotfile in "${dotfiles[@]}" do
-  echo "Moving existing $dotfile from ~ to dotfiles_old/ plus timestamp"
-  mv ~/.$file ~/dotfiles_old/$(date +"%Y%m%d")
+for dotfile in "${dotfiles[@]}"
+do
+  printf "\n Moving existing $dotfile from ~ to dotfiles_old/ plus timestamp.\n"
+  if [ -f $HOME/.$dotfile ];
+  then
+    mv ~/.$dotfile ~/dotfiles_old/$(date +"%Y%m%d")
+  fi
 done
 
 for dotfile in "${dotfiles[@]}"
@@ -38,6 +42,7 @@ then
   vim -c PluginInstall -c quitall
 
   if hash apt-get 2>/dev/null; then
+    sudo apt-get update
     printf "Trying to install YCM pre-requisites with apt-get\n"
     sudo apt-get install -y build-essential cmake python-dev python3-dev
   else
@@ -47,7 +52,7 @@ then
 
   printf "Compiling YCM\n"
   cd ~/.vim/bundle/YouCompleteMe
-  ./install.py
+  python install.py
   cd -
 else
   printf "\nAlready installed vundle?; skipping vim setup steps\n"
@@ -64,7 +69,8 @@ else
   printf "\nAlready installed anaconda3? skipping python setup steps\n"
 fi
 
-if [ -f /sys/hypervisor/uuid ] && [ `head -c 3 /sys/hypervisor/uuid` == ec2 ]; then
+if [ -f /sys/hypervisor/uuid ] && [ `head -c 3 /sys/hypervisor/uuid` == ec2 ];
+then
   printf "\nOn an AWS instance - moving ~.bashrc to ~.bash_user\n"
   mv ~/.bashrc ~.bash_user
 fi
