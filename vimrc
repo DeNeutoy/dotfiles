@@ -16,6 +16,9 @@ Plugin 'Valloric/YouCompleteMe'
 " Nice filesystem browsing
 Plugin 'scrooloose/nerdtree'
 
+" Syntax checking (mostly useful for python)
+Plugin 'scrooloose/syntastic'
+
 " Git integration with vim
 Plugin 'tpope/vim-fugitive'
 
@@ -24,9 +27,14 @@ Plugin 'Lokaltog/vim-easymotion'
 
 " All Plugins must be added before the following line.
 call vundle#end()            " required
-filetype plugin indent on    " required
 
+" Required to allow plugins.
+filetype plugin indent on
+syntax on
 
+" Plugin Configuration.
+
+" *** EasyMotion ***
 " Use vim-like smart casing for easymotion searches.
 let g:EasyMotion_smartcase = 1
 " Don't highlight text apart from the jump characters.
@@ -38,6 +46,37 @@ nmap <Leader>s <Plug>(easymotion-overwin-line)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>w <Plug>(easymotion-bd-wl)
+
+
+" *** YouCompleteMe ***
+" The preview window is what's on top, giving more information about the
+" " possible completions.  This setting makes it go away when you leave insert
+" " mode.
+let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_server_log_level='debug'
+let g:ycm_python_binary_path='python'
+
+" *** Syntastic ***
+let g:syntastic_python_checkers=['mypy', 'pylint']
+let g:syntastic_python_mypy_args='--ignore-missing-imports'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_wq = 0
+" Use python3 to take advantage of type hints.
+let g:syntastic_python_pylint_exec='~/anaconda3/bin/pylint'
+
+" *** NerdTree ***
+let NERDTreeShowBookmarks = 1
+let NERDTreeMapOpenVSplit = 'v'
+let NERDTreeMapOpenSplit = 's'
+"if all we have left is the NERDTree, close it.
+autocmd bufenter * if (winnr("$") == 1
+                       \ && exists("b:NERDTreeType")
+                       \ && b:NERDTreeType == "primary") | q | endif
+
+let NERDTreeIgnore = ['\.pyc$', '\.swp$', '__pycache__[[dir]]']
+let NERDTreeWinSize = 50
+
 
 " Add a highlight group to look out for trailing whitespace.
 " Thanks to: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
