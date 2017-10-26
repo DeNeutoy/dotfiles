@@ -13,6 +13,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Good autocomplete
 Plugin 'Valloric/YouCompleteMe'
 
+" Good colour scheme.
+Plugin 'junegunn/seoul256.vim'
+
 " Nice filesystem browsing
 Plugin 'scrooloose/nerdtree'
 
@@ -47,6 +50,8 @@ map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 map <Leader>w <Plug>(easymotion-bd-wl)
 
+let g:seoul256_background = 234
+colorscheme seoul256
 
 " *** YouCompleteMe ***
 " The preview window is what's on top, giving more information about the
@@ -54,7 +59,6 @@ map <Leader>w <Plug>(easymotion-bd-wl)
 " " mode.
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_server_log_level='debug'
-let g:ycm_python_binary_path='python'
 
 " *** Syntastic ***
 let g:syntastic_python_checkers=['mypy', 'pylint']
@@ -65,14 +69,17 @@ let g:syntastic_check_on_wq = 0
 " Use python3 to take advantage of type hints.
 let g:syntastic_python_pylint_exec='~/anaconda3/bin/pylint'
 
+let g:syntastic_mode_map = { 'mode': 'passive',
+                           \ 'active_filetypes': [],
+                           \ 'passive_filetypes': ['java', 'scala', 'tex'] }
+noremap <leader>c :SyntasticCheck<CR>
+
 " *** NerdTree ***
 let NERDTreeShowBookmarks = 1
 let NERDTreeMapOpenVSplit = 'v'
 let NERDTreeMapOpenSplit = 's'
 "if all we have left is the NERDTree, close it.
-autocmd bufenter * if (winnr("$") == 1
-                       \ && exists("b:NERDTreeType")
-                       \ && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '__pycache__[[dir]]']
 let NERDTreeWinSize = 50
