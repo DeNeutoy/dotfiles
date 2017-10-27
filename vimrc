@@ -60,8 +60,15 @@ colorscheme seoul256
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_server_log_level='debug'
+" Don't confirm that if there is a local .ycm_extra_conf.py we
+" actually want to use it ...
 let g:ycm_confirm_extra_conf=0
+" Use this config by default - it's set to C++ with the standard
+" library paths. Add other include dirs by adding '-isystem', path
+" to the flags list.
 let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
+" Use the first python binary in the PATH, so we get modules
+" loaded from virtualenvs.
 let g:ycm_python_binary_path = 'python'
 
 
