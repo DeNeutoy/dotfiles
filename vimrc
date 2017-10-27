@@ -55,10 +55,15 @@ colorscheme seoul256
 
 " *** YouCompleteMe ***
 " The preview window is what's on top, giving more information about the
-" " possible completions.  This setting makes it go away when you leave insert
-" " mode.
+" possible completions.  This setting makes it go away when you leave insert
+" mode.
 let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_server_log_level='debug'
+let g:ycm_confirm_extra_conf=0
+let g:ycm_global_ycm_extra_conf = '~/dotfiles/.ycm_extra_conf.py'
+let g:ycm_python_binary_path = 'python'
+
 
 " *** Syntastic ***
 let g:syntastic_python_checkers=['mypy', 'pylint']
