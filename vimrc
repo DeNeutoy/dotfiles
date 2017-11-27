@@ -94,8 +94,25 @@ let NERDTreeMapOpenSplit = 's'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 let NERDTreeIgnore = ['\.pyc$', '\.swp$', '__pycache__[[dir]]']
-let NERDTreeWinSize = 50
+let NERDTreeWinSize = 40
+" Toggle the NerdTree window.
+noremap <leader>nt :NERDTreeToggle<CR>
 
+
+" Make some common motions easier to use.
+" Set capital Y to yank until end of line
+nnoremap Y y$
+" Move to the beginning of current line
+nnoremap H 0
+" Move to the end of current line
+nnoremap L $
+
+" Use spaces instead of tabs everywhere, and use two spaces instead of four.
+set et sw=2 sts=2
+
+augroup python
+  autocmd FileType python setlocal et sw=4 sts=4
+augroup END
 
 " Add a highlight group to look out for trailing whitespace.
 " Thanks to: http://vim.wikia.com/wiki/Highlight_unwanted_spaces
