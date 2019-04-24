@@ -6,7 +6,6 @@ dotfiles=(
   bashrc
   gitconfig
   gitignore
-  vim
   vimrc
 )
 
