@@ -8,7 +8,7 @@ export HISTCONTROL=ignoredups
 export EDITOR=vim
 export VISUAL=vim
 
-export PATH="/home/ubuntu/anaconda3/bin:$PATH"
+export PATH="/home/markn/anaconda3/bin:$PATH"
 export CUDA_HOME=/usr/local/cuda
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/cudnn/lib64"
 # Never write bytecode for python.
