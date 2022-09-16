@@ -61,9 +61,9 @@ fi
 if [ ! -d $HOME/anaconda3 ];
 then
   printf "\nInstalling anaconda\n"
-  wget https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh
-  bash Anaconda3-2019.07-Linux-x86_64.sh
-  rm Anaconda3-2019.07-Linux-x86_64.sh
+  wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-x86_64.sh
+  bash Anaconda3-2022.05-Linux-x86_64.sh
+  rm Anaconda3-2022.05-Linux-x86_64.sh
 else
   printf "\nAlready installed anaconda3? skipping python setup steps\n"
 fi
