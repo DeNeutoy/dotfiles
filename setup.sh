@@ -41,12 +41,12 @@ then
   vim -c PluginInstall -c quitall
 
   if hash apt-get 2>/dev/null; then
-    sudo apt-get update
+    apt-get update
     printf "Trying to install YCM pre-requisites with apt-get\n"
-    sudo apt-get install -y build-essential cmake python-dev python3-dev
+    apt-get install -y build-essential cmake python-dev python3-dev
   else
     printf "Trying to install YCM pre-requisites with dnf\n"
-    sudo dnf install build-essential cmake python-dev python3-dev
+    dnf install build-essential cmake python-dev python3-dev
   fi
 
   printf "Compiling YCM\n"
