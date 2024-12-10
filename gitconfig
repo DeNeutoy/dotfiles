@@ -14,5 +14,3 @@ graph = log --graph --decorate --oneline --all
 [core]
 excludesfile = ~/.gitignore
 editor = vim
-[credential]
-	helper = osxkeychain
