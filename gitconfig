@@ -1,5 +1,5 @@
 [user]
-email = markng@allenai.org
+	email = mark.neumann.1992@gmail.com
 name = Mark Neumann
 [color]
 status = auto
@@ -14,3 +14,5 @@ graph = log --graph --decorate --oneline --all
 [core]
 excludesfile = ~/.gitignore
 editor = vim
+[credential]
+	helper = osxkeychain

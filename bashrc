@@ -9,21 +9,35 @@ export EDITOR=vim
 export VISUAL=vim
 
 export PATH="/home/markn/anaconda3/bin:$PATH"
-export CUDA_HOME=/usr/local/cuda
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64:/usr/local/cudnn/lib64"
+# Add local bin to PATH
+export PATH="$HOME/.local/bin:$PATH"
 # Never write bytecode for python.
 export PYTHONDONTWRITEBYTECODE=0
 
 # Make tmux able to use 256 colours.
 alias tmux="TERM=screen-256color-bce tmux"
 
+# Better grep defaults
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
-transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; }
+# System monitoring shortcuts
+alias df='df -h'
+alias du='du -h'
+alias free='free -h'
 
-
+# Git branch in prompt.
 parse_git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+export PS1="\u@\h \W\[\033[32m\]$(parse_git_branch)\[\033[00m\] $ "
 
+# Fix the git branch in prompt to update dynamically
+PROMPT_COMMAND='PS1="\u@\h \W\[\033[32m\]$(parse_git_branch)\[\033[00m\] $ "'
+
+
+# Enable programmable completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi

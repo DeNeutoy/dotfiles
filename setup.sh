@@ -57,15 +57,15 @@ else
   printf "\nAlready installed vundle?; skipping vim setup steps\n"
 fi
 
-# Install anaconda.
+# Install miniconda.
 if [ ! -d $HOME/anaconda3 ];
 then
-  printf "\nInstalling anaconda\n"
-  wget https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh
-  bash Anaconda3-2019.07-Linux-x86_64.sh
-  rm Anaconda3-2019.07-Linux-x86_64.sh
+  printf "\nInstalling miniconda\n"
+  wget https://repo.anaconda.com/miniconda/Miniconda3-py312_24.9.2-0-Linux-x86_64.sh
+  bash Miniconda3-py312_24.9.2-0-Linux-x86_64.sh
+  rm Miniconda3-py312_24.9.2-0-Linux-x86_64.sh
 else
-  printf "\nAlready installed anaconda3? skipping python setup steps\n"
+  printf "\nAlready installed miniconda? skipping python setup steps\n"
 fi
 
 if [ -f /sys/hypervisor/uuid ] && [ `head -c 3 /sys/hypervisor/uuid` == ec2 ];
